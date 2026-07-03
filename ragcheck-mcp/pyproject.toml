@@ -1,0 +1,19 @@
+[project]
+name = "ragcheck-mcp"
+version = "0.1.0"
+description = "RAGCheck MCP Server for AI Agents"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp>=1.0.0",
+    "pydantic>=2.0.0",
+    "pypdf>=4.0.0",
+    "litellm>=1.0.0",
+]
+
+[project.scripts]
+ragcheck-mcp = "ragcheck_mcp.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
