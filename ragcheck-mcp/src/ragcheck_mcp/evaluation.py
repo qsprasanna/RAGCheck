@@ -4,7 +4,7 @@ import litellm
 from pathlib import Path
 from .models import EvaluationReport, MetricScore, FixRecommendation
 
-def run_evaluation(test_dataset_path: str, rag_entrypoint_cmd: str, model: str = "anthropic/claude-3-5-sonnet-20240620") -> EvaluationReport:
+def run_evaluation(test_dataset_path: str, rag_entrypoint_cmd: str, model: str = "anthropic/claude-sonnet-4-6") -> EvaluationReport:
     """
     Evaluates the RAG pipeline by running the entrypoint command for each test question,
     and then uses an LLM to grade the pipeline's answers.

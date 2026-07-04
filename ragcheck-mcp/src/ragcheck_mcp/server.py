@@ -43,7 +43,7 @@ async def handle_list_tools() -> list[types.Tool]:
                     },
                     "model": {
                         "type": "string",
-                        "description": "The litellm model string to use for generation (e.g., 'gpt-4o-mini', 'claude-3-haiku-20240307'). Defaults to 'gpt-4o-mini'."
+                        "description": "The litellm model string to use for generation (e.g., 'gpt-4o-mini', 'anthropic/claude-haiku-4-5'). Defaults to 'gpt-4o-mini'."
                     }
                 },
                 "required": ["num_questions"]
@@ -65,7 +65,7 @@ async def handle_list_tools() -> list[types.Tool]:
                     },
                     "model": {
                         "type": "string",
-                        "description": "The litellm model string to use for rigorous evaluation scoring (e.g., 'anthropic/claude-3-5-sonnet-20240620', 'gpt-4o'). Defaults to 'anthropic/claude-3-5-sonnet-20240620'."
+                        "description": "The litellm model string to use for evaluation scoring (e.g., 'anthropic/claude-sonnet-4-6', 'gpt-4o'). Defaults to 'anthropic/claude-sonnet-4-6'."
                     }
                 },
                 "required": ["test_dataset_path", "rag_entrypoint_cmd"]
@@ -109,7 +109,7 @@ async def handle_call_tool(
     elif name == "ragcheck_evaluate_pipeline":
         test_dataset_path = arguments.get("test_dataset_path")
         rag_entrypoint_cmd = arguments.get("rag_entrypoint_cmd")
-        model = arguments.get("model", "anthropic/claude-3-5-sonnet-20240620")
+        model = arguments.get("model", "anthropic/claude-sonnet-4-6")
         
         try:
             from .evaluation import run_evaluation

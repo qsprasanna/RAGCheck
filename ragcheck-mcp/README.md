@@ -10,10 +10,10 @@ RAGCheck is not just a dashboard—it's an **Agentic Tool** designed to be opera
 Point RAGCheck at your `/docs` folder. It autonomously parses `.md`, `.txt`, and `.pdf` files, chunks the text, and builds a local SQLite vector-ready database in your workspace (`.ragcheck/ragcheck.db`) without any external vector-DB dependencies.
 
 ### 🧪 Synthetic "Golden Dataset" Generation
-Instead of manually writing test questions, RAGCheck uses an LLM (defaults to cost-effective `gpt-4o-mini`) to read your ingested documents and automatically generate Question-Context-Answer (QCA) testing pairs at varying difficulty levels.
+Instead of manually writing test questions, RAGCheck uses an LLM (defaults to `gpt-4o-mini`) to read your ingested documents and automatically generate Question-Context-Answer (QCA) testing pairs at varying difficulty levels.
 
 ### 🕵️ Rigorous RAG Evaluation
-RAGCheck runs your local chatbot/RAG script against the generated questions via your terminal. It captures the answers and uses a high-tier reasoning model (defaults to `claude-3-5-sonnet`) to score:
+RAGCheck runs your local chatbot/RAG script against the generated questions via your terminal. It captures the answers and uses a reasoning model (defaults to `anthropic/claude-sonnet-4-6`) to score:
 *   **Groundedness:** Is the chatbot hallucinating facts not present in the context?
 *   **Context Recall:** Did your retriever actually find the correct chunks of text?
 

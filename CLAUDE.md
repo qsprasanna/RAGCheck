@@ -17,7 +17,7 @@ The MCP server (`ragcheck-mcp/src/ragcheck_mcp/`) follows a pipeline:
 5. **evaluation.py** — Runs the user's RAG entrypoint via subprocess for each test question, then uses LiteLLM to grade groundedness and context recall
 6. **models.py** — Pydantic v2 models for structured JSON output (`EvaluationReport`, `MetricScore`, `FixRecommendation`)
 
-All LLM calls go through **LiteLLM** (BYOK model). Generation defaults to `gpt-4o-mini`; evaluation defaults to `claude-3-5-sonnet`.
+All LLM calls go through **LiteLLM** (BYOK model). Generation defaults to `gpt-4o-mini`; evaluation defaults to `anthropic/claude-sonnet-4-6`. Any LiteLLM-supported provider works (OpenAI, Anthropic, Google, Groq, Ollama, etc.).
 
 ## Development Commands
 
@@ -35,10 +35,11 @@ uvx git+https://github.com/qsprasanna/ragcheck-mcp.git
 python demo/dummy_rag.py "What is the work from home policy?"
 ```
 
-## Required Environment Variables
+## Required Environment Variables (depends on chosen models)
 
-- `OPENAI_API_KEY` — needed for test generation (gpt-4o-mini)
-- `ANTHROPIC_API_KEY` — needed for evaluation scoring (claude-3-5-sonnet)
+- `OPENAI_API_KEY` — needed if using OpenAI models for generation (default: gpt-4o-mini)
+- `ANTHROPIC_API_KEY` — needed if using Anthropic models for evaluation (default: anthropic/claude-sonnet-4-6)
+- Other providers: set the appropriate key per LiteLLM docs (e.g., `GEMINI_API_KEY`, `GROQ_API_KEY`)
 
 ## Key Design Decisions
 
